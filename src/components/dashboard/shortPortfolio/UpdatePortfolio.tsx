@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
 import CommonModal from "@/components/utilitycomponents/commonModal/CommonModal";
+import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -21,14 +22,12 @@ const UpdatePortfolio = ({ updateModal, setUpdateModal, mutate }: any) => {
         formData.append("userID", "2");
         formData.append("image", image);
 
-        fetch(`${process.env.BASE_URL}/api/technology?id=${updateModal?.id}`, {
+        fetch(`${process.env.BASE_URL}/api/short-portfolio?id=${updateModal?.id}`, {
             method: "PUT",
             body: formData,
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
-
                 if (data.status === "success") {
                     toast.success(data?.message);
                     mutate();
@@ -51,13 +50,17 @@ const UpdatePortfolio = ({ updateModal, setUpdateModal, mutate }: any) => {
                 <h1 className="text-[19px] font-medium flex pb-2 text-white">
                     Add new Technology
                 </h1>
-                <form onSubmit={handleSubmit(updatePortfolioHandler)} action="" className="">
-
+                <form
+                    onSubmit={handleSubmit(updatePortfolioHandler)}
+                    action=""
+                    className=""
+                >
                     <div className="relative  rounded-lg mt-4 ">
                         <input
                             className="peer w-full rounded-lg border border-[#1B8EF8] px-4 py-2 text-white focus:outline-none bg-transparent"
                             type="text"
                             placeholder=""
+                            defaultValue={updateModal?.title}
                             {...register("title", { required: true })}
                         />
                         <label
@@ -72,6 +75,7 @@ const UpdatePortfolio = ({ updateModal, setUpdateModal, mutate }: any) => {
                             className="peer w-full rounded-lg border border-[#1B8EF8] px-4 py-2 text-white focus:outline-none bg-transparent"
                             type="number"
                             placeholder=""
+                            defaultValue={updateModal?.total}
                             {...register("total", { required: true })}
                         />
                         <label
@@ -80,6 +84,16 @@ const UpdatePortfolio = ({ updateModal, setUpdateModal, mutate }: any) => {
                         >
                             total
                         </label>
+                    </div>
+                    <div className=" w-full h-[250px] py-2 overflow-hidden">
+                        <Image
+                            className=" h-full  w-full  object-fill"
+                            width={100}
+                            layout="responsive"
+                            height={80}
+                            src={`/uploads/short_portfolio/${updateModal?.image}`}
+                            alt="image"
+                        />
                     </div>
                     <div className="relative  rounded-lg mt-4 ">
                         {/* Enter input image  */}
@@ -96,7 +110,10 @@ const UpdatePortfolio = ({ updateModal, setUpdateModal, mutate }: any) => {
                             Image
                         </label>
                     </div>
-                    <button type='submit' className="text-xl w-32 h-10 mt-5 rounded-lg bg-sky-500 text-white relative overflow-hidden group z-10 hover:text-white duration-1000">
+                    <button
+                        type="submit"
+                        className="text-xl w-32 h-10 mt-5 rounded-lg bg-sky-500 text-white relative overflow-hidden group z-10 hover:text-white duration-1000"
+                    >
                         <span className="absolute bg-sky-600 size-36 rounded-full group-hover:scale-100 scale-0 -z-10 -left-2 -top-10 group-hover:duration-500 duration-700 origin-center transform transition-all"></span>
                         <span className="absolute bg-sky-800 size-36 -left-2 -top-10 rounded-full group-hover:scale-100 scale-0 -z-10 group-hover:duration-700 duration-500 origin-center transform transition-all"></span>
                         Submit

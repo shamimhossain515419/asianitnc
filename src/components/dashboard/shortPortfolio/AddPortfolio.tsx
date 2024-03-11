@@ -16,34 +16,30 @@ const AddPortfolio = ({ mutate }: any) => {
         formState: { errors },
     } = useForm();
 
-    const addUserHandler = (data: any) => {
+    const addUserHandler = async (data: any) => {
         const formData = new FormData();
         formData.append("title", data?.title);
         formData.append("total", data?.total);
         formData.append("userID", "2");
         formData.append("image", image);
-        fetch(`${process.env.BASE_URL}/api/short-portfolio`, {
+        const res = await fetch(`${process.env.BASE_URL}/api/short-portfolio`, {
             method: "POST",
             body: formData,
         })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.code === 200) {
-                    toast.success(data?.message);
-                    mutate();
-                    setActive(false);
-                    reset();
-                    return
+        const result = await res.json();
+        console.log(result);
 
-                } else {
-                    toast.error("Failed to Add Portfolio");
-                    setActive(false);
-                }
-            })
-            .catch((errors) => {
-                toast.error("Failed to technology");
-                setActive(false);
-            });
+        if (result.status === 'success') {
+            toast.success(result?.message);
+            mutate();
+            setActive(false);
+            reset();
+            return
+
+        } else {
+            toast.error("Failed to Add Portfolio");
+            setActive(false);
+        }
     };
     return (
         <>

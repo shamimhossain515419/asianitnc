@@ -39,8 +39,9 @@ export const POST = async (req: Request, res: Response) => {
       },
     });
     return NextResponse.json({
-      message: "Portfolio added successfully",
+      status: "success",
       code: 200,
+      message: "Portfolio added successfully",
     });
   } catch (err: any) {
     return NextResponse.json({ message: err.message, code: 500 });
@@ -51,12 +52,10 @@ export const POST = async (req: Request, res: Response) => {
 export const GET = async (req: Request, res: Response) => {
   try {
     const result = await prisma.short_portfolio.findMany();
-    console.log(result);
-
     return NextResponse.json({
       message: "Success",
       code: 200,
-      body: result,
+      data: result,
     });
   } catch (err: any) {
     console.log(err);
@@ -121,8 +120,9 @@ export const PUT = async (req: Request, res: Response) => {
     });
 
     return NextResponse.json({
-      message: "Short Portfolio Updated Successfully",
+      status: "success",
       code: 200,
+      message: "Short Portfolio Updated Successfully",
     });
   } catch (err: any) {
     return NextResponse.json({ message: err.message, code: 500 });

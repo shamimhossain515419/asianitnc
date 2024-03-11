@@ -68,17 +68,15 @@ const UpdateTechnology = ({ setUpdateModal, updateModal, mutate }: any) => {
                         </label>
                     </div>
 
-                    <div>
-                        <div className=" w-full h-[250px] py-2 overflow-hidden">
-                            <Image
-                                className=" h-full  w-full  object-fill"
-                                width={100}
-                                layout="responsive"
-                                height={80}
-                                src={`/uploads/technology/${updateModal?.image}`}
-                                alt="image"
-                            />
-                        </div>
+                    <div className=" w-full h-[250px] py-2 overflow-hidden">
+                        <Image
+                            className=" h-full  w-full  object-fill"
+                            width={100}
+                            layout="responsive"
+                            height={80}
+                            src={`/uploads/technology/${updateModal?.image}`}
+                            alt="image"
+                        />
                     </div>
 
                     <div className="relative  rounded-lg mt-4 ">
