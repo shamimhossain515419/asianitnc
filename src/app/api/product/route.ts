@@ -56,7 +56,7 @@ export const GET = async (req: Request, res: Response) => {
     return NextResponse.json({
       message: "Success",
       code: 200,
-      body: result,
+      data: result,
     });
   } catch (err: any) {
     return NextResponse.json({ message: err.message, code: 500 });
