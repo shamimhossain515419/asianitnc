@@ -1,0 +1,88 @@
+/* import   google font  */
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* font clsss name  */
+body {
+  background-color: #030334fc;
+  color: #fff;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+}
+.container {
+  @apply max-w-[1440px]    px-5  md:px-5  lg:px-6 mx-auto;
+}
+
+/* swiper style  */
+/*  Hover sub category   animation  */
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 30px;
+}
+
+.swiper .swiper-pagination-bullet-active {
+  background: linear-gradient(to right, #1ea0d9, #9339fb);
+  width: 24px !important;
+}
+
+.swiper .swiper-pagination-bullet {
+  width: 14px;
+  height: 5px !important;
+  border-radius: 2px !important;
+}
+
+.cartShadow {
+  box-shadow: 0 2px 10px rgba(147, 57, 251, 1);
+  animation: shadowAnimation 4s infinite linear;
+}
+
+@keyframes shadowAnimation {
+  0% {
+    box-shadow: 0 10px 30px rgba(147, 57, 251, 1);
+  }
+
+  50% {
+    box-shadow: 5px 2px 20px rgb(147, 57, 251, 1);
+  }
+  70% {
+    box-shadow: 0 2px 20px rgb(147, 57, 251, 1);
+  }
+  100% {
+    box-shadow: 0 10px 30px rgba(147, 57, 251, 1);
+  }
+}
+/* shadow-[0_10px_30px_rgba(147,_57,_251,_1)] q  */
+/* Navbar animation  */
+
+.animate_fadeInUpNavbar {
+  animation: fadeInUpNavbar 0.3s ease-in-out;
+}
+.animate_fadeOutDownNavbar {
+  animation: fadeOutDownNavbar 0.3s ease-in-out;
+}
+
+@keyframes fadeInUpNavbar {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutDownNavbar {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}

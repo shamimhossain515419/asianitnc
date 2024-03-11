@@ -1,0 +1,9 @@
+.footer_bg {
+  background: radial-gradient(
+      98.08% 98.01% at 51% 2%,
+      rgb(11, 11, 64),
+      rgb(2, 29, 84) 47.62%,
+      rgba(3, 3, 52, 0.99) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+}

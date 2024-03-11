@@ -1,0 +1,146 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+model User {
+    id    Int     @id @default(autoincrement())
+    email String @db.VarChar(50)  @unique 
+    name  String @db.VarChar(50)
+    password String
+    role  Int
+    createdAt DateTime @default(now()) @db.Timestamp(0)
+    updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+    Slider Slider[]
+    Service Service[]
+    Solution Solution[]
+    Technology Technology[]
+    Short_portfolio Short_portfolio[]
+    Client Client[]
+    Product Product[]
+    Team Team[] 
+}
+
+model Slider {
+  id      Int    @id @default(autoincrement())
+  photo   String @db.VarChar(60)
+  userID  Int  
+  User    User   @relation(fields: [userID], references: [id],onDelete: Restrict, onUpdate:Cascade)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
+
+// YOUR SERVICES
+model Service{
+  id Int @id @default(autoincrement())
+  title String 
+  description  String @db.VarChar(300)
+  image String
+  link String
+  userID  Int  
+  User    User   @relation(fields: [userID], references: [id],onDelete: Restrict, onUpdate:Cascade)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
+
+// INDUSTRIES WE PROVID
+model Solution {
+  id Int @id @default(autoincrement())
+  title String @db.VarChar(30)
+  image String
+  userID  Int  
+  User    User   @relation(fields: [userID], references: [id],onDelete: Restrict, onUpdate:Cascade)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
+
+enum Stack {
+  frontend
+  backend
+  graphics
+  cloud
+  others
+}
+
+// OUR TECH STACKS
+model Technology {
+  id Int @id @default(autoincrement())
+  type Stack 
+  title String
+  image String
+  userID  Int  
+  User    User   @relation(fields: [userID], references: [id],onDelete: Restrict, onUpdate:Cascade)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
+
+// RESULTS YOU CAN TRUST DELIVERING IT SOLUTIONS GLOBALLY
+model Short_portfolio {
+  id Int @id @default(autoincrement())
+  title String
+  total BigInt
+  image String
+  userID  Int  
+  User    User   @relation(fields: [userID], references: [id],onDelete: Restrict, onUpdate:Cascade)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
+
+// Trusted Clients and Partners
+model Client {
+  id Int @id @default(autoincrement())
+  name String
+  location String
+  image String
+  userID  Int  
+  User    User   @relation(fields: [userID], references: [id],onDelete: Restrict, onUpdate:Cascade)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
+
+// CHOOSE A PRODUCT ACCORDING TO YOUR NEEDS
+model Product {
+   id Int @id @default(autoincrement())
+   title String
+   image String
+   userID  Int  
+   User    User   @relation(fields: [userID], references: [id],onDelete: Restrict, onUpdate:Cascade)
+   Point_list Point_list[]
+   createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
+
+// product porint list 
+model Point_list {
+  id Int @id @default(autoincrement())
+  title String
+  product_id Int
+  Product Product @relation(fields: [product_id],references: [id],onDelete: Restrict,onUpdate: Cascade)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
+
+//  team member list
+model Team {
+  id Int @id @default(autoincrement())
+  name String
+  designations String
+  image String
+  userID  Int  
+  User    User   @relation(fields: [userID], references: [id],onDelete: Restrict, onUpdate:Cascade)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @db.Timestamp(0) @updatedAt
+  
+}
