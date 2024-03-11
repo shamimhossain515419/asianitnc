@@ -14,10 +14,10 @@ const authOptions: any = {
       },
       async authorize(credentials: any) {
         try {
-          const user = credentials;
+          const user = await credentials;
           return user;
         } catch (error) {
-          return null;
+          return { message: "Invalid credentials" };
         }
       },
     }),

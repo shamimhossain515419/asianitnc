@@ -32,7 +32,7 @@ const Client = () => {
                 <div>
                     {/* total user  */}
                     <h1 className=" text-[20px] font-bold">
-                        Total portfolio: {clientData?.body?.length}
+                        Total Client: {clientData?.body?.length}
                     </h1>
                 </div>
                 {/* add  technology button  */}

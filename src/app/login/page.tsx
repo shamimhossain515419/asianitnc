@@ -1,13 +1,13 @@
 "use client";
-
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { FaBedPulse } from "react-icons/fa6";
-
+import Cookies from "js-cookie";
 const Page = () => {
+  const { data: session, status } = useSession();
+  const token = Cookies.get("token");
   const route = useRouter();
   const [loading, setLoading] = useState(false);
   const handleLogin = async (e: any) => {
@@ -26,11 +26,8 @@ const Page = () => {
       if (user.status == "success") {
         const result = await signIn("credentials", user);
         setLoading(false);
-        if (user.status) {
-          setLoading(false);
-          toast.success("Login successful");
-          route.push("/dashboard");
-        }
+        toast.success("Login successful");
+        route.push("/");
       } else {
         toast.error("Login Fail");
       }
@@ -38,6 +35,11 @@ const Page = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    if (status == "authenticated") {
+      route.push("/dashboard");
+    }
+  }, [status, route]);
 
   return (
     <>

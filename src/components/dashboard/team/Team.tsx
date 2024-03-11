@@ -7,8 +7,10 @@ import useSWR from "swr";
 import { fetcher } from "@/utility/Fetcher";
 import Loader from "@/components/utilitycomponents/Loader/Loader";
 import Image from "next/image";
-import { ProductInterface } from "@/types/ProductInterface";
 import AddTeam from "./AddTeam";
+import { TeamInterface } from "@/types/TeamInterface";
+import { DeleteTeam } from "./DeleteTeam";
+import UpdateTeam from "./UpdateTeam";
 
 const Team = () => {
     const {
@@ -16,35 +18,34 @@ const Team = () => {
         error,
         isLoading,
         mutate,
-    } = useSWR(`${process.env.BASE_URL}/api/solution`, fetcher);
-    const [pointModal, setPointModal] = useState<ProductInterface>();
-    const [deleteModal, setDeleteOpenModal] = useState<ProductInterface>();
-    const [updateModal, setUpdateModal] = useState<ProductInterface>();
+    } = useSWR(`${process.env.BASE_URL}/api/team`, fetcher);
+    const [deleteModal, setDeleteOpenModal] = useState<TeamInterface>();
+    const [updateModal, setUpdateModal] = useState<TeamInterface>();
     if (isLoading) {
         return <Loader />;
     }
     return (
         <>
             {/* update Modal */}
-            {/* 
+
             {updateModal && (
-                <UpdateSolution
+                <UpdateTeam
                     mutate={mutate}
                     updateModal={updateModal}
                     setUpdateModal={setUpdateModal}
                 />
-            )} */}
+            )}
             {/* delete Modal */}
-            {/* <DeleteSolution
+            <DeleteTeam
                 openModal={deleteModal}
                 setOpenModal={setDeleteOpenModal}
                 mutate={mutate}
-            /> */}
+            />
             <div className=" pt-2  pb-10 flex justify-between items-center gap-5">
                 <div>
                     {/* total user  */}
                     <h1 className=" text-[20px] font-bold">
-                        Total Product: {teamData?.data?.length}
+                        Total Team: {teamData?.data?.length}
                     </h1>
                 </div>
                 {/* add Solution button  */}
@@ -71,7 +72,13 @@ const Team = () => {
                                 scope="col"
                                 className="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-[#9339FB] text-white "
                             >
-                                Title
+                                Name
+                            </th>
+                            <th
+                                scope="col"
+                                className="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-[#9339FB] text-white "
+                            >
+                                Designations
                             </th>
                             <th
                                 scope="col"
@@ -82,7 +89,7 @@ const Team = () => {
                         </tr>
                         {/* table data  */}
 
-                        {teamData?.data?.map((product: ProductInterface, i: number) => {
+                        {teamData?.data?.map((product: TeamInterface, i: number) => {
                             return (
                                 <tr
                                     key={product?.id}
@@ -96,7 +103,7 @@ const Team = () => {
                                             <div className="w-[100px] h-[100px] pt-1 overflow-hidden">
                                                 <Image
                                                     className=""
-                                                    src={`/uploads/solution/${product?.image}`}
+                                                    src={`/uploads/team/${product?.image}`}
                                                     width={100}
                                                     height={100}
                                                     layout="responsive"
@@ -109,7 +116,16 @@ const Team = () => {
                                         <div className=" flex items-start gap-4">
                                             <div className=" pt-1">
                                                 <h1 className="text-[16px] capitalize font-medium">
-                                                    {product?.title}
+                                                    {product?.name}
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-[#9339FB] stroke-slate-500 text-white py-1 ">
+                                        <div className=" flex items-start gap-4">
+                                            <div className=" pt-1">
+                                                <h1 className="text-[16px] capitalize font-medium">
+                                                    {product?.designations}
                                                 </h1>
                                             </div>
                                         </div>
