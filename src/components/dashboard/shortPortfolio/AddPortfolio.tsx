@@ -28,16 +28,15 @@ const AddPortfolio = ({ mutate }: any) => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
-
-                if (data.status === "success") {
+                if (data.code === 200) {
                     toast.success(data?.message);
                     mutate();
                     setActive(false);
                     reset();
+                    return
 
                 } else {
-                    toast.error("Failed to Add technology");
+                    toast.error("Failed to Add Portfolio");
                     setActive(false);
                 }
             })

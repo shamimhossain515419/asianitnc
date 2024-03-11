@@ -1,11 +1,8 @@
+import Client from '@/components/dashboard/client/Client';
 import React from 'react';
 
 const page = () => {
-    return (
-        <div>
-
-        </div>
-    );
+    return (<Client />);
 };
 
 export default page;
