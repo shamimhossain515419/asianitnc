@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import CommonModal from '@/components/utilitycomponents/commonModal/CommonModal';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { FaPlus } from 'react-icons/fa';
+import CommonModal from "@/components/utilitycomponents/commonModal/CommonModal";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { FaPlus } from "react-icons/fa";
 
 const AddSolution = ({ mutate }: any) => {
     const [active, setActive] = useState(false);
@@ -24,17 +24,14 @@ const AddSolution = ({ mutate }: any) => {
         const res = await fetch(`${process.env.BASE_URL}/api/solution`, {
             method: "POST",
             body: formData,
-        })
+        });
         const result = await res.json();
-        console.log(result);
-
-        if (result.status === 'success') {
+        if (result.status === "success") {
             toast.success(result?.message);
             mutate();
             setActive(false);
             reset();
-            return
-
+            return;
         } else {
             toast.error("Failed to Add Portfolio");
             setActive(false);
@@ -51,9 +48,14 @@ const AddSolution = ({ mutate }: any) => {
             </button>
 
             <CommonModal active={active} setActive={setActive}>
-                <h1 className="text-[19px] font-medium flex pb-2 text-white">Add new Solution</h1>
-                <form onSubmit={handleSubmit(addSolutionHandler)} action="" className="">
-
+                <h1 className="text-[19px] font-medium flex pb-2 text-white">
+                    Add new Solution
+                </h1>
+                <form
+                    onSubmit={handleSubmit(addSolutionHandler)}
+                    action=""
+                    className=""
+                >
                     <div className="relative  rounded-lg mt-4 ">
                         <input
                             className="peer w-full rounded-lg border border-[#1B8EF8] px-4 py-2 text-white focus:outline-none bg-transparent"
@@ -83,7 +85,10 @@ const AddSolution = ({ mutate }: any) => {
                             Image
                         </label>
                     </div>
-                    <button type='submit' className="text-xl w-32 h-10 mt-5 rounded-lg bg-sky-500 text-white relative overflow-hidden group z-10 hover:text-white duration-1000">
+                    <button
+                        type="submit"
+                        className="text-xl w-32 h-10 mt-5 rounded-lg bg-sky-500 text-white relative overflow-hidden group z-10 hover:text-white duration-1000"
+                    >
                         <span className="absolute bg-sky-600 size-36 rounded-full group-hover:scale-100 scale-0 -z-10 -left-2 -top-10 group-hover:duration-500 duration-700 origin-center transform transition-all"></span>
                         <span className="absolute bg-sky-800 size-36 -left-2 -top-10 rounded-full group-hover:scale-100 scale-0 -z-10 group-hover:duration-700 duration-500 origin-center transform transition-all"></span>
                         Submit

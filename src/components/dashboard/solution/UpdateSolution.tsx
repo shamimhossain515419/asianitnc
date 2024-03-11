@@ -44,6 +44,7 @@ const UpdateSolution = ({ updateModal, setUpdateModal, mutate }: any) => {
 
     return (
         <>
+            {/* update Solution  */}
             <CommonModal active={updateModal} setActive={setUpdateModal}>
                 <h1 className="text-[19px] font-medium flex pb-2 text-white">
                     Add new Solution
@@ -54,6 +55,7 @@ const UpdateSolution = ({ updateModal, setUpdateModal, mutate }: any) => {
                     className=""
                 >
                     <div className="relative  rounded-lg mt-4 ">
+                        {/* input title  */}
                         <input
                             className="peer w-full rounded-lg border border-[#1B8EF8] px-4 py-2 text-white focus:outline-none bg-transparent"
                             type="text"

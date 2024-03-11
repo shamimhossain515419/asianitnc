@@ -1,11 +1,8 @@
+import Team from '@/components/dashboard/team/Team';
 import React from 'react';
 
 const page = () => {
-    return (
-        <div>
-
-        </div>
-    );
+    return (<Team />);
 };
 
 export default page;
