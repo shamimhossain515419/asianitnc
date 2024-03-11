@@ -50,13 +50,17 @@ export const POST = async (req: Request, res: Response) => {
 // get.............................................................................
 export const GET = async (req: Request, res: Response) => {
   try {
-    const result = await prisma.solution.findMany();
+    const result = await prisma.short_portfolio.findMany();
+    console.log(result);
+
     return NextResponse.json({
       message: "Success",
       code: 200,
       body: result,
     });
   } catch (err: any) {
+    console.log(err);
+
     return NextResponse.json({ message: err.message, code: 500 });
   }
 };
