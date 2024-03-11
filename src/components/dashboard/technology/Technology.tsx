@@ -40,7 +40,7 @@ const Technology = () => {
                 <div>
                     {/* total user  */}
                     <h1 className=" text-[20px] font-bold">
-                        Total User: {TechnologyData?.body?.length}
+                        Total Technology: {TechnologyData?.body?.length}
                     </h1>
                 </div>
                 {/* add  technology button  */}

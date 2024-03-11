@@ -20,9 +20,6 @@ const Solution = () => {
         mutate,
     } = useSWR(`${process.env.BASE_URL}/api/solution`, fetcher);
     const [pointModal, setPointModal] = useState<ProductInterface>();
-
-    // user Delete Handler
-
     const [deleteModal, setDeleteOpenModal] = useState<ProductInterface>();
     const [updateModal, setUpdateModal] = useState<ProductInterface>();
     if (isLoading) {
@@ -52,11 +49,11 @@ const Solution = () => {
                         Total Product: {SolutionData?.data?.length}
                     </h1>
                 </div>
-                {/* add user button  */}
+                {/* add Solution button  */}
                 <AddSolution mutate={mutate} />
             </div>
             <div className="w-full overflow-x-auto">
-                {/* user table  */}
+                {/* Solution table  */}
                 <table className="w-full text-left border border-separate rounded border-[#9339FB]">
                     <tbody>
                         <tr className=" bg-gradient-to-r from-[#1EA0D9] to-[#9339FB]">
@@ -88,8 +85,6 @@ const Solution = () => {
                         {/* table data  */}
 
                         {SolutionData?.data?.map((product: ProductInterface, i: number) => {
-                            console.log(product);
-
                             return (
                                 <tr
                                     key={product?.id}
