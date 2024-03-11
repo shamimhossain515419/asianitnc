@@ -38,10 +38,10 @@ const ShortPortfolio = () => {
             <div className=" pt-2  pb-10 flex justify-between items-center gap-5">
                 <div>
                     {/* total portfolio  */}
-                    <h1 className=" text-[20px] font-bold">Total portfolio:</h1>
+                    <h1 className=" text-[20px] font-bold">Total portfolio: {shortPortfolioData?.data?.length} </h1>
                 </div>
                 {/* add  portfolio button  */}
-                <AddPortfolio mutate={""} />
+                <AddPortfolio mutate={mutate} />
             </div>
             <div className="w-full overflow-x-auto">
                 {/* user table  */}
@@ -71,7 +71,7 @@ const ShortPortfolio = () => {
                                 scope="col"
                                 className="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-[#9339FB] text-white "
                             >
-                                Type
+                                total
                             </th>
 
                             <th
@@ -83,7 +83,7 @@ const ShortPortfolio = () => {
                         </tr>
                         {/* table data  */}
 
-                        {shortPortfolioData?.body?.map((port: any, i: number) => {
+                        {shortPortfolioData?.data?.map((port: any, i: number) => {
                             //  table data
                             return (
                                 <tr
@@ -108,7 +108,7 @@ const ShortPortfolio = () => {
                                                 width={100}
                                                 layout="responsive"
                                                 height={80}
-                                                src={`/uploads/technology/${port?.image}`}
+                                                src={`/uploads/short_portfolio/${port?.image}`}
                                                 alt="image"
                                             />
                                         </div>
@@ -117,7 +117,7 @@ const ShortPortfolio = () => {
                                         {port?.title}
                                     </td>
                                     <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-[#9339FB] stroke-slate-500 text-white ">
-                                        {port?.type}
+                                        {port?.total}
                                     </td>
 
                                     <td className="h-12 px-6 text-center text-sm transition duration-300 border-t border-l first:border-l-0 border-[#9339FB] stroke-slate-500 text-white ">

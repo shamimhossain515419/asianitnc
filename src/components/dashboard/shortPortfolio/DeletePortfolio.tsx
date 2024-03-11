@@ -56,7 +56,7 @@ const DeletePortfolio = ({ openModal, setOpenModal, mutate }: any) => {
                         <h6 className="font-medium text-center text-slate-700">
                             <p>
                                 Are you sure you want to delete{" "}
-                                <span className="font-bold"> {openModal?.name}</span>?
+                                <span className="font-bold"> {openModal?.title}</span>?
                             </p>
                         </h6>
                         <button
