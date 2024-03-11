@@ -1,11 +1,8 @@
+import Product from "@/components/dashboard/product/Product";
 
 
 const page = () => {
-    return (
-        <div>
-
-        </div>
-    );
+    return (<Product />);
 };
 
 export default page;

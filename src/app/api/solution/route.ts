@@ -34,8 +34,9 @@ export const POST = async (req: Request, res: Response) => {
       },
     });
     return NextResponse.json({
-      message: "Solution Added Successfully",
+      status: "success",
       code: 200,
+      message: "Solution Added Successfully",
     });
   } catch (err: any) {
     return NextResponse.json({ message: err.message, code: 500 });
@@ -49,7 +50,7 @@ export const GET = async (req: Request, res: Response) => {
     return NextResponse.json({
       message: "Success",
       code: 200,
-      body: result,
+      data: result,
     });
   } catch (err: any) {
     return NextResponse.json({ message: err.message, code: 500 });
@@ -111,6 +112,7 @@ export const PUT = async (req: Request, res: Response) => {
     return NextResponse.json({
       message: "Solution Updated Successfully",
       code: 200,
+      status: "success",
     });
   } catch (err: any) {
     return NextResponse.json({ message: err.message, code: 500 });
