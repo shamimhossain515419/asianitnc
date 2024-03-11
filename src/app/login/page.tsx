@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 const Page = () => {
   const { data: session, status } = useSession();
   const token = Cookies.get("token");
+
   const route = useRouter();
   const [loading, setLoading] = useState(false);
   const handleLogin = async (e: any) => {
@@ -27,7 +28,7 @@ const Page = () => {
         const result = await signIn("credentials", user);
         setLoading(false);
         toast.success("Login successful");
-        route.push("/");
+        window.location.replace("/dashboard");
       } else {
         toast.error("Login Fail");
       }
@@ -35,12 +36,10 @@ const Page = () => {
       setLoading(false);
     }
   };
-  useEffect(() => {
-    if (status == "authenticated") {
-      route.push("/dashboard");
-    }
-  }, [status, route]);
 
+  if (status == "authenticated") {
+    route.push("/dashboard");
+  }
   return (
     <>
       <div className=" flex justify-center items-center h-screen">

@@ -7,7 +7,7 @@ export const POST = async (req: Request, res: Response) => {
   try {
     const reqBody = await req.json();
 
-    const result = await prisma.point_list.createMany({
+    const result = await prisma.point_list.create({
       data: reqBody,
     });
 
@@ -15,7 +15,6 @@ export const POST = async (req: Request, res: Response) => {
       status: "success",
       code: 200,
       message: "Point inserted successfully",
-      body: reqBody,
     });
   } catch (err: any) {
     return NextResponse.json({

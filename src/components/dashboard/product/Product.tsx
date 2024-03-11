@@ -12,7 +12,7 @@ import { DeleteProduct } from "./DeleteProduct";
 import UpdateProduct from "./UpdateProduct";
 import { ProductInterface } from "@/types/ProductInterface";
 import PointList from "./PointList";
-
+import { FaPlus } from "react-icons/fa6";
 
 const Product = () => {
     const {
@@ -40,7 +40,7 @@ const Product = () => {
                     setUpdateModal={setUpdateModal}
                 />
             )}
-            <PointList active={pointModal} setActive={setPointModal} />
+            <PointList mutate={mutate} active={pointModal} setActive={setPointModal} />
             {/* delete Modal */}
             <DeleteProduct
                 openModal={deleteModal}
@@ -96,8 +96,6 @@ const Product = () => {
                         {/* table data  */}
 
                         {ProductData?.data?.map((product: ProductInterface, i: number) => {
-                            console.log(product);
-
                             return (
                                 <tr
                                     key={product?.id}
@@ -129,8 +127,11 @@ const Product = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td onClick={() => setPointModal(product)} className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-[#9339FB] stroke-slate-500 text-white py-1 ">
-                                        <span>Point add</span>
+                                    <td onClick={() => setPointModal(product)} className="h-12  px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-[#9339FB] stroke-slate-500 text-white py-1 ">
+                                        <div className=" flex items-center gap-2">
+                                            <span>Point </span>
+                                            <FaPlus className="text-[20px] text-white" />
+                                        </div>
                                     </td>
                                     <td className="h-12 px-6 text-center text-sm transition duration-300 border-t border-l first:border-l-0 border-[#9339FB] stroke-slate-500 text-white ">
                                         <div>

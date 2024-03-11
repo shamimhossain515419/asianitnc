@@ -5,6 +5,9 @@ const authOptions: any = {
       return { user, account };
     },
   },
+  session: {
+    maxAge: 2 * 60 * 60,
+  },
   providers: [
     CredentialsProvider({
       name: "Credentials",

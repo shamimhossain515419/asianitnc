@@ -113,7 +113,7 @@ const DashboardSidebar = () => {
                             </span>
                             <span className=" flex-1   capitalize whitespace-nowrap">
                                 {" "}
-                                Sort Portfolio
+                                Short Portfolio
                             </span>
                         </Link>
                         <Link
