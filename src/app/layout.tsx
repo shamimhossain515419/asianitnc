@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "react-hot-toast";
+import NextAuthProvider from "@/components/AuthProvider/NextAuthProvider";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Asian It INC ",
@@ -19,7 +20,10 @@ export default function RootLayout({
       <body>
         <div id="portal-root"></div>
         <NextTopLoader />
-        {children}
+        <NextAuthProvider>
+          {children}
+        </NextAuthProvider>
+
         <Toaster />
       </body>
     </html>

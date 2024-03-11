@@ -119,9 +119,9 @@ export const PUT = async (req: Request, res: Response) => {
     });
 
     return NextResponse.json({
+      status: "success",
       message: "Team Member Updated Successfully",
       code: 200,
-      data: updatedTeamMember,
     });
   } catch (err: any) {
     return NextResponse.json({ message: err.message, code: 500 });

@@ -46,7 +46,7 @@ const Solution = () => {
                 <div>
                     {/* total user  */}
                     <h1 className=" text-[20px] font-bold">
-                        Total Product: {SolutionData?.data?.length}
+                        Total Solution: {SolutionData?.data?.length}
                     </h1>
                 </div>
                 {/* add Solution button  */}

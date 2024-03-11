@@ -2,23 +2,32 @@
 import useBooleanStore from "@/store/AppStore";
 import Link from "next/link";
 import React from "react";
+import Cookies from "js-cookie";
 import {
     FaUserAltSlash,
     FaHome,
     FaServicestack,
     FaPassport,
 } from "react-icons/fa";
+import { CiLogout } from "react-icons/ci";
 import { GrTechnology } from "react-icons/gr";
 import { LuSliders } from "react-icons/lu";
 import { GiWaterRecycling } from "react-icons/gi";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { RiTeamLine } from "react-icons/ri";
 import { AiOutlineSolution } from "react-icons/ai";
+import { signOut } from "next-auth/react";
+import toast from "react-hot-toast";
 
 const DashboardSidebar = () => {
     const toggleSitebarValue = useBooleanStore(
         (state: any) => state.toggleSitebarValue
     );
+    const handleLogout = () => {
+        signOut();
+        Cookies.remove('token')
+        toast.success("logout successfully")
+    }
     return (
         <>
             <div
@@ -104,7 +113,7 @@ const DashboardSidebar = () => {
                             </span>
                             <span className=" flex-1   capitalize whitespace-nowrap">
                                 {" "}
-                                Sort Portfolio
+                                Short Portfolio
                             </span>
                         </Link>
                         <Link
@@ -155,6 +164,15 @@ const DashboardSidebar = () => {
                                 Team
                             </span>
                         </Link>
+                        {/* logout button  */}
+                        <div onClick={handleLogout} className="  cursor-pointer w-full flex items-center justify-start gap-3 rounded-lg py-3 px-2  text-body-5 md:text-body-4 font-normal text-metal-900 hover:bg-[#030334fc]"
+                        > <span className="h-6 w-6 flex-shrink-0 text-metal-500 transition duration-75 group-hover:text-metal-900">
+                                <CiLogout size={24} />
+                            </span>
+                            <span className=" flex-1   capitalize whitespace-nowrap">
+                                logout
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
