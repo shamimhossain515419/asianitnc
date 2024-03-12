@@ -19,8 +19,6 @@ const ShortPortfolio = () => {
 
     const [deleteModal, setDeleteOpenModal] = useState<any>();
     const [updateModal, setUpdateModal] = useState<any>();
-    console.log(shortPortfolioData);
-
     return (
         <>
             {/* update portfolio component  */}

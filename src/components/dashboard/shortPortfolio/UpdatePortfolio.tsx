@@ -19,7 +19,7 @@ const UpdatePortfolio = ({ updateModal, setUpdateModal, mutate }: any) => {
         const formData = new FormData();
         formData.append("title", data?.title);
         formData.append("total", data?.total);
-        formData.append("userID", "2");
+        formData.append("userID", "1");
         formData.append("image", image);
 
         fetch(`${process.env.BASE_URL}/api/short-portfolio?id=${updateModal?.id}`, {

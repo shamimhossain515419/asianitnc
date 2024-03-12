@@ -24,7 +24,7 @@ const AddService = ({ mutate }: any) => {
     formData.append("description", data.description);
     formData.append("link", data.link);
     formData.append("image", image);
-    formData.append("userID", "2");
+    formData.append("userID", "1");
 
     // insert the data
     fetch(`${process.env.BASE_URL}/api/service`, {
@@ -98,7 +98,7 @@ const AddService = ({ mutate }: any) => {
           <div className="relative  rounded-lg mt-4 ">
             <input
               className="peer w-full rounded-lg border border-[#1B8EF8] px-4 py-2 text-white focus:outline-none bg-transparent"
-              type="password"
+              type="text"
               placeholder=""
               {...register("link", { required: true })}
             />

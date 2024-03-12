@@ -64,7 +64,7 @@ const SliderTable = () => {
                             </th>
                         </tr>
                         {/* table data  */}
-                        {SliderData?.body?.map((silder: SliderInterface, i: number) => (
+                        {SliderData?.body?.map((slider: SliderInterface, i: number) => (
                             <tr
                                 key={i}
                                 className="transition-colors duration-300 hover:bg-[#171E37]"
@@ -87,7 +87,7 @@ const SliderTable = () => {
                                             width={100}
                                             layout="responsive"
                                             height={80}
-                                            src={`/uploads/slider/${silder?.photo}`}
+                                            src={`/uploads/slider/${slider?.photo}`}
                                             alt="image"
                                         />
                                     </div>
@@ -110,7 +110,7 @@ const SliderTable = () => {
                                                 <div className=" space-y-2">
                                                     {/* table action button  */}
                                                     <div
-                                                        onClick={() => setDeleteOpenModal(silder)}
+                                                        onClick={() => setDeleteOpenModal(slider)}
                                                         className="flex items-center text-red-500  gap-2"
                                                     >
                                                         <MdDeleteOutline className="text-[17px] lg:text-[20px]" />

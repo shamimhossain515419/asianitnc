@@ -7,8 +7,15 @@ import banner from "../../../../public/images/hero/hero.jpg";
 import Image from "next/image";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { IoIosArrowForward } from "react-icons/io";
+import useSWR from "swr";
+import { fetcher } from "@/utility/Fetcher";
 
 const Hero = () => {
+
+  const {
+    data: SliderData,
+  } = useSWR(`${process.env.BASE_URL}/api/slider`, fetcher);
+
   return (
     <>
       <div className="  relative">
@@ -32,56 +39,18 @@ const Hero = () => {
           className="swiper"
         >
           {/* single slider  */}
-          <SwiperSlide>
-            <div className="max-h-[800px] w-full">
-              <Image
-                className="w-full h-full"
-                layout="responsive"
-                src={banner}
-                alt="image"
-              ></Image>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="max-h-[800px] w-full">
-              <Image
-                className="w-full h-full"
-                layout="responsive"
-                src={banner}
-                alt="image"
-              ></Image>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="max-h-[800px] w-full">
-              <Image
-                className="w-full h-full"
-                layout="responsive"
-                src={banner}
-                alt="image"
-              ></Image>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="max-h-[800px] w-full">
-              <Image
-                className="w-full h-full"
-                layout="responsive"
-                src={banner}
-                alt="image"
-              ></Image>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="max-h-[800px] w-full">
-              <Image
-                className="w-full h-full"
-                layout="responsive"
-                src={banner}
-                alt="image"
-              ></Image>
-            </div>
-          </SwiperSlide>
+          {
+            SliderData?.body?.map((slider: any, i: number) => <SwiperSlide key={i}>
+              <div className="max-h-[800px] w-full">
+                <Image width={1000} height={8000}
+                  className="w-full h-full"
+                  layout="responsive"
+                  src={`/uploads/slider/${slider?.photo}`}
+                  alt="image"
+                ></Image>
+              </div>
+            </SwiperSlide>)
+          }
         </Swiper>
 
         {/* Custom navigation buttons */}
