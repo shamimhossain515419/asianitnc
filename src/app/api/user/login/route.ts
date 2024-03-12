@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 import { CreateToken } from "@/utility/JwtTokenHelper";
 
-
 export async function POST(req: Request, res: Response) {
   try {
     let reqBody = await req.json();
@@ -23,6 +22,7 @@ export async function POST(req: Request, res: Response) {
       return NextResponse.json(
         {
           status: "success",
+          id: result.id,
           name: result.name,
           role: result.role,
           email: result.email,

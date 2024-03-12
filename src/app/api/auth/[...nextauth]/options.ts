@@ -14,6 +14,8 @@ const authOptions: any = {
       credentials: {
         email: { label: "Email", type: "text", placeholder: "Enter Email" },
         password: { label: "Password", type: "password" },
+        id: { label: "id", type: "number" },
+        role: { label: "role", type: "number" },
       },
       async authorize(credentials: any) {
         try {
@@ -25,7 +27,6 @@ const authOptions: any = {
       },
     }),
   ],
-
   secret: "https://rollie-alpha.vercel.app/",
 };
 

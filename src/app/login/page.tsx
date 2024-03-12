@@ -24,6 +24,8 @@ const Page = () => {
         headers: { "Content-Type": "application/json" },
       });
       const user = await res.json();
+      console.log(user);
+
       if (user.status == "success") {
         const result = await signIn("credentials", user);
         setLoading(false);
