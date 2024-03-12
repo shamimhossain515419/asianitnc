@@ -18,7 +18,7 @@ const UpdateTechnology = ({ setUpdateModal, updateModal, mutate }: any) => {
         const formData = new FormData();
         formData.append("type", data?.type);
         formData.append("title", data?.title);
-        formData.append("userID", "2");
+        formData.append("userID", "1");
         formData.append("image", image);
 
         fetch(`${process.env.BASE_URL}/api/technology?id=${updateModal?.id}`, {

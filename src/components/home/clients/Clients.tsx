@@ -7,9 +7,17 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import Image from "next/image";
-import { ClientData } from "@/utility/ClientData";
-import { ClientInterface } from "@/types/ClientInterface";
+import { ClientDataInterface, ClientInterface } from "@/types/ClientInterface";
+import useSWR from "swr";
+import { fetcher } from "@/utility/Fetcher";
 const Clients = () => {
+
+    const {
+        data: clientData,
+        error,
+        isLoading,
+        mutate,
+    } = useSWR(`${process.env.BASE_URL}/api/client`, fetcher);
     // custom Prev Button
     const customPrevButton = (
         <div className="custom-swiper-button-prev-category bg-gradient-to-b from-[#1EA0D9] to-[#9339FB]  w-7 lg:w-10  h-7  lg:h-10 rounded-full flex items-center justify-center">
@@ -64,12 +72,12 @@ const Clients = () => {
                         modules={[Pagination, Navigation]}
                         className="relative  overflow-hidden w-[92%]"
                     >
-                        {ClientData?.map((item: ClientInterface, index: number) => (
+                        {clientData?.body?.map((client: ClientDataInterface, index: number) => (
                             <SwiperSlide key={index}>
                                 <div className="h-[120px]  overflow-hidden">
-                                    <Image
+                                    <Image width={120} height={150}
                                         className="object-contain h-full"
-                                        src={item?.image}
+                                        src={`/uploads/client/${client?.image}`}
                                         alt="image"
                                     ></Image>
                                 </div>

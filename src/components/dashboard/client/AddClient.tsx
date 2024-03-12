@@ -22,7 +22,7 @@ const AddClient = ({ mutate }: any) => {
         const formData = new FormData();
         formData.append("name", data?.name);
         formData.append("location", data?.location);
-        formData.append("userID", "2");
+        formData.append("userID", "1");
         formData.append("image", image);
         const res = await fetch(`${process.env.BASE_URL}/api/client`, {
             method: "POST",

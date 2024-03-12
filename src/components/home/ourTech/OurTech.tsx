@@ -1,7 +1,35 @@
-import { OurTechData, TechInterface } from "@/utility/OutTech";
 import OutTechCart from "./OutTechCart";
+import { TechnologyInterface } from "@/types/Technology";
+const fetchData = async () => {
+    const res = await fetch(`${process.env.BASE_URL}/api/technology`);
+    const technology = await res.json();
+    return technology?.body;
+};
+const OurTech = async () => {
+    const technology = await fetchData();
+    // Function to create an object with arrays grouped by type
+    const groupDataByType = (data: TechnologyInterface[]) => {
+        const groupedData: Record<string, TechnologyInterface[]> = {};
 
-const OurTech = () => {
+        data.forEach((item) => {
+            const { type } = item;
+            if (!groupedData[type]) {
+                groupedData[type] = [];
+            }
+            groupedData[type].push(item);
+        });
+
+        return groupedData;
+    };
+
+    // Create an object with arrays grouped by type
+    const groupedData = groupDataByType(technology);
+
+    const groupedDataArray: any = Object.keys(groupedData).map((type) => ({
+        type,
+        items: groupedData[type],
+    }));
+
     return (
         <>
             <div className=" py-2">
@@ -14,7 +42,7 @@ const OurTech = () => {
                     </h1>
                 </div>
                 <div className=" py-10">
-                    {OurTechData?.map((tech: TechInterface, index: number) => (
+                    {groupedDataArray?.map((tech: any, index: number) => (
                         <OutTechCart key={index} tech={tech}></OutTechCart>
                     ))}
                 </div>

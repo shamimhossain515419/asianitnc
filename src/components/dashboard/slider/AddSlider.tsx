@@ -16,7 +16,7 @@ const AddSlider = ({ mutate }: any) => {
         const photo = form.photo.files[0];
         const formData = new FormData();
         formData.append("photo", photo);
-        formData.append("userID", "2");
+        formData.append("userID", "1");
         try {
             const response = await fetch(`${process.env.BASE_URL}/api/slider`, {
                 method: "POST",

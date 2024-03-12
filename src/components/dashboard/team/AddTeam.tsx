@@ -19,7 +19,7 @@ const AddTeam = ({ mutate }: any) => {
         const formData = new FormData();
         formData.append("name", data?.name);
         formData.append("designations", data?.designations);
-        formData.append("userID", "2");
+        formData.append("userID", "1");
         formData.append("image", image);
         fetch(`${process.env.BASE_URL}/api/team`, {
             method: "POST",

@@ -19,7 +19,7 @@ const AddTechnology = ({ mutate }: any) => {
         const formData = new FormData();
         formData.append("type", data?.type);
         formData.append("title", data?.title);
-        formData.append("userID", "2");
+        formData.append("userID", "1");
         formData.append("image", image);
 
         fetch(`${process.env.BASE_URL}/api/technology`, {
@@ -60,7 +60,6 @@ const AddTechnology = ({ mutate }: any) => {
                 <form onSubmit={handleSubmit(addUserHandler)} action="" className="">
 
                     <div className="relative  rounded-lg mt-4 ">
-                        Enter input title
                         <input
                             className="peer w-full rounded-lg border border-[#1B8EF8] px-4 py-2 text-white focus:outline-none bg-transparent"
                             type="text"
@@ -98,7 +97,7 @@ const AddTechnology = ({ mutate }: any) => {
                                 defaultValue="" // Set default value for select
                             >
                                 <option disabled value="">
-                                    Select role
+                                    Select Type
                                 </option>
                                 <option value="frontend" className="text-black">
                                     frontend

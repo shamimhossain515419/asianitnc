@@ -93,7 +93,7 @@ const Technology = () => {
                                         className="transition-colors duration-300 hover:bg-[#171E37]"
                                     >
                                         <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-[#9339FB] stroke-slate-500 text-white py-1 ">
-                                            {/* techa  */}
+                                            {/* tech  */}
                                             <div className=" flex items-start gap-4">
                                                 <div className=" pt-1">
                                                     <h1 className="text-[16px] capitalize font-medium">
@@ -103,7 +103,7 @@ const Technology = () => {
                                             </div>
                                         </td>
                                         <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-[#9339FB] stroke-slate-500 text-white ">
-                                            {/* Slider images  */}
+                                            {/* tech images  */}
                                             <div className=" w-[120px] h-[80px] py-2 overflow-hidden">
                                                 <Image
                                                     className=" h-full  w-full  object-fill"

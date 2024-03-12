@@ -17,7 +17,7 @@ const UpdateProduct = ({ updateModal, setUpdateModal, mutate }: any) => {
     const updatePortfolioHandler = (data: any) => {
         const formData = new FormData();
         formData.append("title", data?.title);
-        formData.append("userID", "2");
+        formData.append("userID", "1");
         formData.append("image", image);
 
         fetch(`${process.env.BASE_URL}/api/product?id=${updateModal?.id}`, {

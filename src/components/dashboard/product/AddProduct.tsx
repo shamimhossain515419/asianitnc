@@ -19,7 +19,7 @@ const AddProduct = ({ mutate }: any) => {
     const addProductHandler = async (data: any) => {
         const formData = new FormData();
         formData.append("title", data?.title);
-        formData.append("userID", "2");
+        formData.append("userID", "1");
         formData.append("image", image);
         const res = await fetch(`${process.env.BASE_URL}/api/product`, {
             method: "POST",
