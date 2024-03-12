@@ -6,6 +6,8 @@ import Loader from "../utilitycomponents/Loader/Loader";
 
 const PrivateRoute = ({ children }: any) => {
     const { data: session, status } = useSession();
+    console.log(session);
+
     const token = Cookies.get("token");
     const router = useRouter();
     if (status == "loading") {

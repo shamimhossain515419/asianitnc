@@ -1,10 +1,21 @@
-import React from 'react';
+import AboutBanner from "@/components/about/AboutBanner";
+import WhoWeAre from "@/components/about/WhoWeAre";
+import WhyChooseAsianIt from "@/components/about/WhyChooseAsianIt";
+import Clients from "@/components/home/clients/Clients";
+import Delivering from "@/components/home/delivering/Delivering";
+import React from "react";
 
 const page = () => {
     return (
-        <div>
-            <h1 className='text-[55px] font-semibold py-2'>  About page  page </h1>
-        </div>
+        <>
+            <AboutBanner />
+            <WhoWeAre />
+            <Delivering />
+            <div className="container">
+                <Clients />
+            </div>
+            <WhyChooseAsianIt />
+        </>
     );
 };
 

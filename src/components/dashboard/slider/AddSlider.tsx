@@ -1,10 +1,14 @@
 "use client";
 import CommonModal from "@/components/utilitycomponents/commonModal/CommonModal";
+import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaPlus } from "react-icons/fa";
 
 const AddSlider = ({ mutate }: any) => {
+    const { data: session, status } = useSession();
+    console.log(session);
+
     const [active, setActive] = useState(false);
     const handleSubmit = async (e: any) => {
         e.preventDefault();
