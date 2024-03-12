@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-const MemberCart = () => {
+import { TeamInterface } from "@/types/TeamInterface";
+const MemberCart = ({ team }: { team: TeamInterface }) => {
   return (
     <>
       <div className="h-[400px] flex flex-col justify-end  relative">
@@ -9,11 +10,11 @@ const MemberCart = () => {
             <div className="pb-[20px]">
               {/* member name */}
               <h1 className="text-[16px] font-bold uppercase text-[#05BAE1] text-center">
-                Litton Hossain
+                {team?.name}
               </h1>
               {/* member title  */}
               <p className="text-[12px] text-center font-bold pt-1">
-                CEO , CHAIRMAN AND FOUNDER
+                {team?.designations}
               </p>
             </div>
           </div>
@@ -24,9 +25,7 @@ const MemberCart = () => {
               width={250}
               height={255}
               className="w-full h-full rounded-[4px]"
-              src={
-                "https://www.asianitinc.com/frontend/assets/img/team/byvguzx2YJvJPmpFaqwMMJ78MsWaT7BHXvfMvCA9.jpg"
-              }
+              src={`/uploads/team/${team?.image}`}
               alt="image"
             ></Image>
           </div>

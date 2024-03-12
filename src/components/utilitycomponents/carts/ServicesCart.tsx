@@ -7,8 +7,8 @@ const ServicesCart = ({ service }: { service: serviceInterface }) => {
   return (
     <>
       <div className="relative h-full">
-        <div className="cartShadow opacity-85 hover:opacity-100 duration-200 rounded-[8px] relative w-full overflow-hidden mx-auto bg-gradient-to-b p-[1px] from-transparent to-[#9339FB]">
-          <div className="py-6 w-full bg-[#0b0b2e]  rounded-[8px]">
+        <div className="cartShadow opacity-85 h-full hover:opacity-100 duration-200 rounded-[8px] relative w-full overflow-hidden mx-auto bg-gradient-to-b p-[1px] from-transparent to-[#9339FB]">
+          <div className="py-6 w-full bg-[#0b0b2e]  h-full   rounded-[8px]">
             <div className=" text-center">
 
               <div className="w-[80px] h-[80px] mx-auto">

@@ -1,6 +1,4 @@
-import { ServicesInterface } from "@/types/ServicesInterface";
-
-export const ServicesData: ServicesInterface[] = [
+export const ServicesData: any = [
   {
     id: 1,
     name: "Android App Development",

@@ -89,10 +89,10 @@ const Team = () => {
                         </tr>
                         {/* table data  */}
 
-                        {teamData?.data?.map((product: TeamInterface, i: number) => {
+                        {teamData?.data?.map((team: TeamInterface, i: number) => {
                             return (
                                 <tr
-                                    key={product?.id}
+                                    key={team?.id}
                                     className="transition-colors duration-300 hover:bg-[#171E37]"
                                 >
                                     <td className="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-[#9339FB] stroke-slate-500 text-white py-1 ">
@@ -103,7 +103,7 @@ const Team = () => {
                                             <div className="w-[100px] h-[100px] pt-1 overflow-hidden">
                                                 <Image
                                                     className=""
-                                                    src={`/uploads/team/${product?.image}`}
+                                                    src={`/uploads/team/${team?.image}`}
                                                     width={100}
                                                     height={100}
                                                     layout="responsive"
@@ -116,7 +116,7 @@ const Team = () => {
                                         <div className=" flex items-start gap-4">
                                             <div className=" pt-1">
                                                 <h1 className="text-[16px] capitalize font-medium">
-                                                    {product?.name}
+                                                    {team?.name}
                                                 </h1>
                                             </div>
                                         </div>
@@ -125,7 +125,7 @@ const Team = () => {
                                         <div className=" flex items-start gap-4">
                                             <div className=" pt-1">
                                                 <h1 className="text-[16px] capitalize font-medium">
-                                                    {product?.designations}
+                                                    {team?.designations}
                                                 </h1>
                                             </div>
                                         </div>
@@ -146,14 +146,14 @@ const Team = () => {
                                                 >
                                                     <div className=" space-y-2">
                                                         <div
-                                                            onClick={() => setDeleteOpenModal(product)}
+                                                            onClick={() => setDeleteOpenModal(team)}
                                                             className="flex text-red-500 items-center gap-2"
                                                         >
                                                             <MdDeleteOutline className="text-[17px] lg:text-[20px]" />
                                                             <p>Delete</p>
                                                         </div>
                                                         <div
-                                                            onClick={() => setUpdateModal(product)}
+                                                            onClick={() => setUpdateModal(team)}
                                                             className=" flex items-center gap-2"
                                                         >
                                                             <MdEdit className="text-[17px] text-black lg:text-[20px]" />

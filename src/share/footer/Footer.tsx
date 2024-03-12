@@ -17,8 +17,8 @@ import member1 from "../../../public/images/icons/member/member (1).png";
 import member2 from "../../../public/images/icons/member/member (2).png";
 import member3 from "../../../public/images/icons/member/member (3).png";
 import Copyright from "./Copyright";
-import { ServicesData } from "@/utility/ServicesData";
 import { ResourcesData } from "@/utility/Resources";
+import { ServicesData } from "@/utility/ServicesData";
 
 const Footer = () => {
     return (
@@ -131,7 +131,7 @@ const Footer = () => {
                                 <ul className=" space-y-2">
                                     {/* services data mapping  */}
                                     {
-                                        ServicesData?.map((item) => <li key={item?.id} className=" flex items-center gap-2">
+                                        ServicesData?.map((item: any) => <li key={item?.id} className=" flex items-center gap-2">
                                             <span className=" w-[8px] h-[8px] bg-white rounded-full"></span>
                                             <Link
                                                 className="text-[15px]  hover:text-primary duration-200"
@@ -160,7 +160,7 @@ const Footer = () => {
                                     {/* resources point  */}
 
                                     {
-                                        ResourcesData?.map((item) => <li key={item?.id} className=" flex items-center gap-2">
+                                        ResourcesData?.map((item: any) => <li key={item?.id} className=" flex items-center gap-2">
                                             <span className=" w-[8px] h-[8px] bg-white rounded-full"></span>
                                             <Link
                                                 className="text-[15px]  hover:text-primary duration-200"

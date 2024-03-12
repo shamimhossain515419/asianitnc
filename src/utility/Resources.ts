@@ -1,6 +1,4 @@
-import { ServicesInterface } from "@/types/ServicesInterface";
-
-export const ResourcesData: ServicesInterface[] = [
+export const ResourcesData: any = [
   {
     id: 1,
     name: "Blog & News",
