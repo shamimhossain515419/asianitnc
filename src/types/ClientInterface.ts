@@ -1,13 +1,8 @@
-import { StaticImageData } from "next/image";
-export interface ClientInterface {
-  image: StaticImageData;
-}
-
 export interface ClientDataInterface {
   id: number;
   name: string;
   location: string;
-  image: StaticImageData;
+  image: string;
   userID: string;
   createdAt: Date;
   updatedAt: Date;
